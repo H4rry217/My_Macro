@@ -1,0 +1,11 @@
+F:\Source\CSharp\My_Macro\bin\Debug\My_Macro.exe.config
+F:\Source\CSharp\My_Macro\bin\Debug\My_Macro.exe
+F:\Source\CSharp\My_Macro\bin\Debug\My_Macro.pdb
+F:\Source\CSharp\My_Macro\obj\Debug\My_Macro.csprojAssemblyReference.cache
+F:\Source\CSharp\My_Macro\obj\Debug\My_Macro.Main_MacroForm.resources
+F:\Source\CSharp\My_Macro\obj\Debug\My_Macro.Properties.Resources.resources
+F:\Source\CSharp\My_Macro\obj\Debug\My_Macro.csproj.GenerateResource.cache
+F:\Source\CSharp\My_Macro\obj\Debug\My_Macro.csproj.CoreCompileInputs.cache
+F:\Source\CSharp\My_Macro\obj\Debug\My_Macro.exe
+F:\Source\CSharp\My_Macro\obj\Debug\My_Macro.pdb
+F:\Source\CSharp\My_Macro\obj\Debug\My_Macro.CrosshairForm.resources

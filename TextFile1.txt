@@ -1,0 +1,35 @@
+﻿下注1433 904    一号马333 348     下注2  1290 786    加大码数1521 535   再博一次 966 1005
+/*Keyboard.Mouse_Left_Dowm(1433, 904);
+                        Keyboard.Mouse_Left_Up(966, 1005);
+                        Keyboard.Mouse_Left_Dowm(1433, 904);
+
+                        Thread.Sleep(500);
+
+                        Keyboard.Mouse_Left_Up(333, 348);
+                        Keyboard.Mouse_Left_Dowm(333, 348);
+                        Keyboard.Mouse_Left_Dowm(333, 348);
+
+                        Thread.Sleep(1500);
+
+                        Keyboard.Mouse_Move(1290, 786);
+                        Keyboard.Mouse_Left_Up(1290, 786);
+                        Thread.Sleep(2000);
+                        Keyboard.Mouse_Left_Dowm(1290, 786);
+
+                        Keyboard.Mouse_Left_Dowm(1290, 786);
+
+                        Thread.Sleep(15);
+
+                        for (int i = 1; i <= 100; i++)
+                        {
+                            Keyboard.Mouse_Left_Dowm(1521, 535);
+                        }
+
+                        Thread.Sleep(35000);
+
+
+                        Keyboard.Mouse_Move(966, 1005);
+                        Keyboard.Mouse_Left_Up(966, 1005);
+                        Thread.Sleep(1000);
+                        Keyboard.Mouse_Left_Dowm(966, 1005);
+                        Thread.Sleep(1000);*/
