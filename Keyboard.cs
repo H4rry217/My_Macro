@@ -1055,6 +1055,20 @@ namespace My_Macro
             OEM_CLEAR = 0,
         }
 
+        public static Dictionary<string, ScanCodeShort> Key2ScanCodeMap = new Dictionary<string, ScanCodeShort>
+        {
+            {"Q", ScanCodeShort.KEY_Q},{"W", ScanCodeShort.KEY_W},{"E", ScanCodeShort.KEY_E},{"R", ScanCodeShort.KEY_R},
+            {"T", ScanCodeShort.KEY_T},{"Y", ScanCodeShort.KEY_Y},{"U", ScanCodeShort.KEY_U},{"I", ScanCodeShort.KEY_I},
+            {"O", ScanCodeShort.KEY_O},{"P", ScanCodeShort.KEY_P},{"A", ScanCodeShort.KEY_A},{"S", ScanCodeShort.KEY_S},
+            {"D", ScanCodeShort.KEY_D},{"F", ScanCodeShort.KEY_F},{"G", ScanCodeShort.KEY_G},{"H", ScanCodeShort.KEY_H},
+            {"J", ScanCodeShort.KEY_J},{"K", ScanCodeShort.KEY_K},{"L", ScanCodeShort.KEY_L},{"Z", ScanCodeShort.KEY_Z},
+            {"X", ScanCodeShort.KEY_X},{"C", ScanCodeShort.KEY_C},{"V", ScanCodeShort.KEY_V},{"B", ScanCodeShort.KEY_B},
+            {"N", ScanCodeShort.KEY_N},{"M", ScanCodeShort.KEY_M},{" ", ScanCodeShort.SPACE},{"0", ScanCodeShort.NUMPAD0},
+            {"1", ScanCodeShort.NUMPAD1},{"2", ScanCodeShort.NUMPAD2},{"3", ScanCodeShort.NUMPAD3},{"4", ScanCodeShort.NUMPAD4},
+            {"5", ScanCodeShort.NUMPAD5},{"6", ScanCodeShort.NUMPAD6},{"7", ScanCodeShort.NUMPAD7},{"8", ScanCodeShort.NUMPAD8},
+            {"9", ScanCodeShort.NUMPAD9}
+        };
+
         /// <summary>
         /// Define HARDWAREINPUT struct
         /// </summary>

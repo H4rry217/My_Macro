@@ -19,6 +19,11 @@ namespace My_Macro
         private static bool MacroSwitch = false;
         private static bool ChatSwitch = false;
         private static bool CrossHairSwitch = false;
+        private static bool CEO_MODE = false;
+        private static List<Keyboard.ScanCodeShort> CUSTOM_CHAT = new List<Keyboard.ScanCodeShort>()
+        {
+            Keyboard.ScanCodeShort.KEY_T
+        };
 
         [DllImport("user32.dll", EntryPoint = "FindWindow")]
         public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
@@ -124,11 +129,12 @@ namespace My_Macro
                 Keyboard.ScanCodeShort.OEM_COMMA
             });
 
-            foreach(string chat in MacroChat.Keys)
+            MacroChat.Add("CUSTOM_CHAT", new Keyboard.ScanCodeShort[] { });
+
+            foreach (string chat in MacroChat.Keys)
             {
                 listBox1.Items.Add(chat);
             }
-
         }
 
         private void hook_KeyDown(object sender, KeyEventArgs e)
@@ -139,10 +145,12 @@ namespace My_Macro
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
                 Keyboard.KeyDown(Keyboard.ScanCodeShort.KEY_C, false);
+                Thread.Sleep(40);
                 Keyboard.KeyDown(Keyboard.ScanCodeShort.CAPITAL, false);
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
                 Keyboard.KeyUP(Keyboard.ScanCodeShort.CAPITAL, false);
                 Keyboard.KeyUP(Keyboard.ScanCodeShort.KEY_C, false);
+                //Keyboard.KeyDown(Keyboard.ScanCodeShort.KEY_W, false);
                 /*Keyboard.KeyDown(Keyboard.ScanCodeShort.CONTROL, false);
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_T);
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_V);
@@ -166,7 +174,7 @@ namespace My_Macro
                         break;
                     case (int)Keys.NumPad4:
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_M);
-                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
+                        if (CEO_MODE) Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
@@ -178,14 +186,21 @@ namespace My_Macro
                         //Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.LEFT, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
-                        Thread.Sleep(300);
+                        Thread.Sleep((int)numericUpDown3.Value);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.LEFT, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
-                        Thread.Sleep(300);
+                        Thread.Sleep((int)numericUpDown3.Value);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.LEFT, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
+                        Thread.Sleep((int)numericUpDown3.Value);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.LEFT, true);
@@ -207,7 +222,7 @@ namespace My_Macro
                         break;
                     case (int)Keys.NumPad8:
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_M);
-                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
+                        if (CEO_MODE) Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
@@ -219,7 +234,7 @@ namespace My_Macro
                         break;
                     case (int)Keys.NumPad9:
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_M);
-                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
+                        if (CEO_MODE) Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
@@ -243,7 +258,6 @@ namespace My_Macro
 
         private void hook_MouseButtonDown(object sender, MouseEventArgs e)
         {
-            //label9.Text = e.
 
             if (e.Button.Equals(MouseButtons.Middle))
             {
@@ -253,7 +267,10 @@ namespace My_Macro
 
                     Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_T);
 
-                    foreach (Keyboard.ScanCodeShort key in MacroChat[listBox1.SelectedItem.ToString()])
+                    List<Keyboard.ScanCodeShort> forScancodeDic =
+                        listBox1.SelectedItem.ToString().Equals("CUSTOM_CHAT") ? CUSTOM_CHAT : MacroChat[listBox1.SelectedItem.ToString()].ToList();
+
+                    foreach (Keyboard.ScanCodeShort key in forScancodeDic)
                     {
                         Keyboard.FuckingPressKey(key);
                     }
@@ -263,41 +280,6 @@ namespace My_Macro
                     return;
                 }
             }
-
-            /*switch (e.Button)
-            {
-                case MouseButtons.XButton1:
-
-                    if (ChatSwitch)
-                    {
-                        if (listBox1.SelectedItem == null) return;
-
-                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_T);
-
-                        foreach (Keyboard.ScanCodeShort key in MacroChat[listBox1.SelectedItem.ToString()])
-                        {
-                            Keyboard.FuckingPressKey(key);
-                        }
-
-                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
-
-                        return;
-                    }
-
-                    Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_3);
-                    Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_2);
-                    Keyboard.Mouse_Right_Dowm();
-                    Keyboard.Mouse_Left_Dowm();
-
-                    Keyboard.Mouse_Left_Up();
-                    Keyboard.Mouse_Right_Up();
-                    break;
-                case MouseButtons.XButton2:
-                    Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_3);
-                    Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_1);
-                    break;
-
-            }*/
         }
 
         private void Main_MacroForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -344,6 +326,30 @@ namespace My_Macro
                 "Email:1339544914@qq.com\n" +
                 "Welcome to fuck me"
                 );
+        }
+
+        private void Button4_Click_1(object sender, EventArgs e)
+        {
+            CEO_MODE = !CEO_MODE;
+            button4.BackgroundImage = CEO_MODE ? Properties.Resources.switch_on : Properties.Resources.switch_off;
+
+        }
+
+        private void TextBox1_Leave(object sender, EventArgs e)
+        {
+            CUSTOM_CHAT.Clear();
+
+            foreach (char c in textBox1.Text)
+            {
+                CUSTOM_CHAT.Add(Keyboard.Key2ScanCodeMap[c.ToString().ToUpper()]);
+            }
+
+            textBox1.ForeColor = Color.Green;
+        }
+
+        private void TextBox1_Enter(object sender, EventArgs e)
+        {
+            textBox1.ForeColor = Color.DeepPink;
         }
     }
 }
