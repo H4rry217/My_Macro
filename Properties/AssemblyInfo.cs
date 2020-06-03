@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("My_Macro")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Macro for GTA5")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("https://github.com/HarryZ1720/My_Macro")]
 [assembly: AssemblyProduct("My_Macro")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCopyright("Open Source in Github")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

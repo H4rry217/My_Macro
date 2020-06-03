@@ -319,15 +319,6 @@ namespace My_Macro
             Crosshair.Location = (Point)new Size((int)numericUpDown1.Value, (int)numericUpDown2.Value);
         }
 
-        private void Button4_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(
-                "Author:HarryZ \n" +
-                "Email:1339544914@qq.com\n" +
-                "Welcome to fuck me"
-                );
-        }
-
         private void Button4_Click_1(object sender, EventArgs e)
         {
             CEO_MODE = !CEO_MODE;
@@ -350,6 +341,16 @@ namespace My_Macro
         private void TextBox1_Enter(object sender, EventArgs e)
         {
             textBox1.ForeColor = Color.DeepPink;
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("OpenSource in github.com/HarryZ1720/My_Macro\n" +
+                "CTRL+7   CEO BST\n" +
+                "CTRL+4   BUY AMMO\n" +
+                "CTRL+8   VISION 1\n" +
+                "CTRL+9   VISION 2\n" +
+                "Mouse Middle   Type Chat");
         }
     }
 }
