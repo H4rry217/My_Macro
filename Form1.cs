@@ -141,6 +141,7 @@ namespace My_Macro
         {
             if (e.KeyValue == 192)
             {
+                Keyboard.KeyUP(Keyboard.ScanCodeShort.SHIFT, false);
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_M);
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
@@ -150,6 +151,7 @@ namespace My_Macro
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
                 Keyboard.KeyUP(Keyboard.ScanCodeShort.CAPITAL, false);
                 Keyboard.KeyUP(Keyboard.ScanCodeShort.KEY_C, false);
+                Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_M);
                 //Keyboard.KeyDown(Keyboard.ScanCodeShort.KEY_W, false);
                 /*Keyboard.KeyDown(Keyboard.ScanCodeShort.CONTROL, false);
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_T);
@@ -207,6 +209,30 @@ namespace My_Macro
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
+                        break;
+                    case (int)Keys.NumPad5:
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_M);
+                        if (CEO_MODE) Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
+                        Thread.Sleep(50);
+                        //Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.LEFT, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
+                        /////
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.LEFT, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.DOWN, true);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
+                        Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_M);
+
                         break;
                     case (int)Keys.NumPad7:
                         Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_M);
@@ -345,7 +371,7 @@ namespace My_Macro
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("OpenSource in github.com/HarryZ1720/My_Macro\n" +
+            MessageBox.Show("Project: github.com/H4rry217/My_Macro\n" +
                 "CTRL+7   CEO BST\n" +
                 "CTRL+4   BUY AMMO\n" +
                 "CTRL+8   VISION 1\n" +
