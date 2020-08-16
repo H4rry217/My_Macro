@@ -20,6 +20,7 @@ namespace My_Macro
         private static bool ChatSwitch = false;
         private static bool CrossHairSwitch = false;
         private static bool CEO_MODE = false;
+        private static string CUSTOM_CHAT_C = "github.com/H4rry217/My_Macro";
         private static List<Keyboard.ScanCodeShort> CUSTOM_CHAT = new List<Keyboard.ScanCodeShort>()
         {
             Keyboard.ScanCodeShort.KEY_T
@@ -28,13 +29,20 @@ namespace My_Macro
         [DllImport("user32.dll", EntryPoint = "FindWindow")]
         public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
+        public const int WM_CHAR = 0x102;
+
         private KeyEventHandler myKeyEventHandeler = null;//按键钩子
         private KeyboardHook k_hook = new KeyboardHook();
 
         private MouseEventHandler myMouseHandeler = null;//按键钩子
         private MouseHook m_hook = new MouseHook();
 
-        private Dictionary<string, Keyboard.ScanCodeShort[]> MacroChat = new Dictionary<string, Keyboard.ScanCodeShort[]>();
+        private string[] MacroChat = new string[]
+        {
+            "CRY", "RIP", "NOOB", "NICE HACK", ".", "CUSTOM_CHAT"
+        };
 
         public Main_MacroForm()
         {
@@ -51,12 +59,12 @@ namespace My_Macro
                 k_hook.Stop();//关闭键盘钩子
             }
 
-            if (myMouseHandeler != null)
+            /*if (myMouseHandeler != null)
             {
                 m_hook.OnMouseActivity -= myMouseHandeler;//取消按键事件
                 myMouseHandeler = null;
                 m_hook.Stop();//关闭鼠标钩子
-            }
+            }*/
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -70,12 +78,12 @@ namespace My_Macro
                     k_hook.Stop();//关闭键盘钩子
                 }
 
-                if (myMouseHandeler != null)
+                /*if (myMouseHandeler != null)
                 {
                     m_hook.OnMouseActivity -= myMouseHandeler;//取消按键事件
                     myMouseHandeler = null;
                     m_hook.Stop();//关闭鼠标钩子
-                }
+                }*/
             }
             else
             {
@@ -83,9 +91,9 @@ namespace My_Macro
                 k_hook.KeyDownEvent += myKeyEventHandeler;//钩住键按下
                 k_hook.Start();//安装键盘钩子
 
-                myMouseHandeler = new MouseEventHandler(hook_MouseButtonDown);
+                /*myMouseHandeler = new MouseEventHandler(hook_MouseButtonDown);
                 m_hook.OnMouseActivity += myMouseHandeler;//钩住键按下
-                m_hook.Start();//安装鼠标钩子
+                m_hook.Start();//安装鼠标钩子*/
             }
 
             MacroSwitch = !MacroSwitch;
@@ -94,44 +102,7 @@ namespace My_Macro
 
         private void fk_u_mother()
         {
-            MacroChat.Add("CRY", new Keyboard.ScanCodeShort[] {
-                Keyboard.ScanCodeShort.KEY_C,
-                Keyboard.ScanCodeShort.KEY_R,
-                Keyboard.ScanCodeShort.KEY_Y
-            });
-
-            MacroChat.Add("RIP", new Keyboard.ScanCodeShort[] {
-                Keyboard.ScanCodeShort.KEY_R,
-                Keyboard.ScanCodeShort.KEY_I,
-                Keyboard.ScanCodeShort.KEY_P
-            });
-
-            MacroChat.Add("NOOB", new Keyboard.ScanCodeShort[] {
-                Keyboard.ScanCodeShort.KEY_N,
-                Keyboard.ScanCodeShort.KEY_O,
-                Keyboard.ScanCodeShort.KEY_O,
-                Keyboard.ScanCodeShort.KEY_B
-            });
-
-            MacroChat.Add("NICE HACK", new Keyboard.ScanCodeShort[] {
-                Keyboard.ScanCodeShort.KEY_N,
-                Keyboard.ScanCodeShort.KEY_I,
-                Keyboard.ScanCodeShort.KEY_C,
-                Keyboard.ScanCodeShort.KEY_E,
-                Keyboard.ScanCodeShort.SPACE,
-                Keyboard.ScanCodeShort.KEY_H,
-                Keyboard.ScanCodeShort.KEY_A,
-                Keyboard.ScanCodeShort.KEY_C,
-                Keyboard.ScanCodeShort.KEY_K
-            });
-
-            MacroChat.Add(".", new Keyboard.ScanCodeShort[] {
-                Keyboard.ScanCodeShort.OEM_COMMA
-            });
-
-            MacroChat.Add("CUSTOM_CHAT", new Keyboard.ScanCodeShort[] { });
-
-            foreach (string chat in MacroChat.Keys)
+            foreach (string chat in MacroChat)
             {
                 listBox1.Items.Add(chat);
             }
@@ -141,7 +112,7 @@ namespace My_Macro
         {
             if (e.KeyValue == 192)
             {
-                Keyboard.KeyUP(Keyboard.ScanCodeShort.SHIFT, false);
+                /*Keyboard.KeyUP(Keyboard.ScanCodeShort.SHIFT, false);
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_M);
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.UP, true);
@@ -151,13 +122,28 @@ namespace My_Macro
                 Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
                 Keyboard.KeyUP(Keyboard.ScanCodeShort.CAPITAL, false);
                 Keyboard.KeyUP(Keyboard.ScanCodeShort.KEY_C, false);
-                Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_M);
-                //Keyboard.KeyDown(Keyboard.ScanCodeShort.KEY_W, false);
-                /*Keyboard.KeyDown(Keyboard.ScanCodeShort.CONTROL, false);
-                Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_T);
-                Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_V);
-                Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);*/
+                Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_M);*/
 
+                 if (ChatSwitch)
+                {
+                    if (listBox1.SelectedItem == null) return;
+
+                    Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.KEY_T);
+
+                    /*List<Keyboard.ScanCodeShort> forScancodeDic =
+                        listBox1.SelectedItem.ToString().Equals("CUSTOM_CHAT") ? CUSTOM_CHAT : MacroChat[listBox1.SelectedItem.ToString()].ToList();
+
+                    foreach (Keyboard.ScanCodeShort key in forScancodeDic)
+                    {
+                        Keyboard.FuckingPressKey(key);
+                    }
+                    */
+                    SendKeys.Send(listBox1.SelectedItem.ToString().Equals("CUSTOM_CHAT")? CUSTOM_CHAT_C: listBox1.SelectedItem.ToString());
+
+                    Keyboard.FuckingPressKey(Keyboard.ScanCodeShort.RETURN);
+
+                    return;
+                }
             }
 
             if ((int)ModifierKeys == (int)Keys.Control)
@@ -282,7 +268,7 @@ namespace My_Macro
 
         }
 
-        private void hook_MouseButtonDown(object sender, MouseEventArgs e)
+        /*private void hook_MouseButtonDown(object sender, MouseEventArgs e)
         {
 
             if (e.Button.Equals(MouseButtons.Middle))
@@ -306,7 +292,7 @@ namespace My_Macro
                     return;
                 }
             }
-        }
+        }*/
 
         private void Main_MacroForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -354,12 +340,14 @@ namespace My_Macro
 
         private void TextBox1_Leave(object sender, EventArgs e)
         {
-            CUSTOM_CHAT.Clear();
+            /*CUSTOM_CHAT.Clear();
 
             foreach (char c in textBox1.Text)
             {
                 CUSTOM_CHAT.Add(Keyboard.Key2ScanCodeMap[c.ToString().ToUpper()]);
-            }
+            }*/
+
+            CUSTOM_CHAT_C = textBox1.Text;
 
             textBox1.ForeColor = Color.Green;
         }
@@ -371,12 +359,9 @@ namespace My_Macro
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Project: github.com/H4rry217/My_Macro\n" +
-                "CTRL+7   CEO BST\n" +
-                "CTRL+4   BUY AMMO\n" +
-                "CTRL+8   VISION 1\n" +
-                "CTRL+9   VISION 2\n" +
-                "Mouse Middle   Type Chat");
+            Clipboard.SetDataObject("bilibili.com/video/BV1SK411J7eA/");
+            (new Form2()).Show();
         }
+
     }
 }

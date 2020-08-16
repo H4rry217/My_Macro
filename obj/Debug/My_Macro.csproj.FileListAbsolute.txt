@@ -9,3 +9,4 @@ F:\Source\CSharp\My_Macro\obj\Debug\My_Macro.csproj.CoreCompileInputs.cache
 F:\Source\CSharp\My_Macro\obj\Debug\My_Macro.exe
 F:\Source\CSharp\My_Macro\obj\Debug\My_Macro.pdb
 F:\Source\CSharp\My_Macro\obj\Debug\My_Macro.CrosshairForm.resources
+F:\Source\CSharp\My_Macro\obj\Debug\My_Macro.Form2.resources
